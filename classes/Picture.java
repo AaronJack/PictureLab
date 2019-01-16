@@ -96,6 +96,56 @@ public class Picture extends SimplePicture
         pixelObj.setBlue(0);
       }
     }
+}
+
+  public void keepOnlyBlue(){
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setGreen(0);
+        pixelObj.setRed(0);
+      }
+    }
+  }
+
+  public void keepOnlyRed(){
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setGreen(0);
+        pixelObj.setBlue(0);
+      }
+    }
+  }
+
+  public void negate(){
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setRed(255 - pixelObj.getRed());
+        pixelObj.setBlue(255 - pixelObj.getBlue());
+        pixelObj.setGreen(255 - pixelObj.getGreen());
+      }
+    }
+  }
+
+  public void grayscale(){
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels)
+    {
+      for (Pixel pixelObj : rowArray)
+      {
+        pixelObj.setRed((pixelObj.getBlue() + pixelObj.getRed() + pixelObj.getGreen()) / 3);
+        pixelObj.setBlue((pixelObj.getBlue() + pixelObj.getRed() + pixelObj.getGreen()) / 3);
+        pixelObj.setGreen((pixelObj.getBlue() + pixelObj.getRed() + pixelObj.getGreen()) / 3);
+      }
+    }
   }
   
   /** Method that mirrors the picture around a 
